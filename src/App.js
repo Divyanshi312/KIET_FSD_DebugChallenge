@@ -21,7 +21,7 @@ export default function App() {
         p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.category.toLowerCase().includes(searchQuery.toLowerCase());
 
-      // FIX Bug 1: include boundary prices
+      
       const matchPrice =
         p.price >= priceRange.min &&
         p.price <= priceRange.max;
@@ -55,7 +55,7 @@ export default function App() {
 
     return list;
 
-  // FIX Bug 2: category missing in dependencies
+  
   }, [searchQuery, priceRange, category, sortBy]);
 
   function addToCart(product) {
@@ -78,7 +78,7 @@ export default function App() {
 
   function removeFromCart(id) {
 
-    // FIX Bug 3: remove selected item correctly
+    
     setCartItems(prev =>
       prev.filter(i => i.id !== id)
     );
@@ -96,11 +96,11 @@ export default function App() {
     );
   }
 
-  // FIX Bug 4: use qty, not count
+  
   const cartCount =
     cartItems.reduce((sum, i) => sum + i.qty, 0);
 
-  // FIX Bug 5: use id, not productId
+  
   const cartItemIds =
     new Set(cartItems.map(i => i.id));
 
